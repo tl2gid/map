@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .wrap{
+            width:550px;
+            margin:auto
+        }
+        img{
+            width:100%;
+        }
+        header{
+            width:100%;
+            border:1px solid red; 
+            height:100px;
+        }
+        .title{
+            margin-top:50px;
+            width:200px;
+        }
+        .map-box{
+            width:100%;
+            overflow: hidden;
+            padding: 20px;
+            position:relative;
+            height:700px;
+            border:1px solid red;
+        }
+        
+    </style>
+    <script>
+        window.onload = function(){
+            var image = document.getElementById('map');
+            image.style.transform = 'scale(1.7) translate(-40%,-10%)';
+            image.style.transition = '1.6s';  
+        }   
+
+        // 처음 이미지가 만들어질 곳을 정합니다. 왼쪽에서 10, 화면상단에서 20 만큼의 위치에 이미지를 놓아보겠습니다.
+        var img_L = 10;
+        var img_T = 20;
+        var targetObj;
+        function getLeft(o){
+        return parseInt(o.style.left.replace('px', ''));
+        }
+        function getTop(o){
+        return parseInt(o.style.top.replace('px', ''));
+        }
+        // 이미지를 움직이는 함수를 만들어 보겠습니다.
+        // 처음있던 위치애서, 움직인값의 좌표만큼을 더해줍니다.
+        function moveDrag(e){
+        var e_obj = window.event? window.event : e;
+        var dmvx = parseInt(e_obj.clientX + img_L);
+        var dmvy = parseInt(e_obj.clientY + img_T);
+        targetObj.style.left = dmvx +"px";
+        targetObj.style.top = dmvy +"px";
+        return false;
+        }
+        // 드래그를 시작하는 함수 입니다.
+        // 마지막으로 움직인 좌표값에서, 이전움직였던 좌표값을 빼줍니다. == 움직인 좌표를 나타냅니다.
+        // 움직였던 좌표에서 처음 드래그를 시작했던 좌표를 빼줍니다. 움직인 좌표를 나타내줍니다
+        function startDrag(e, obj){
+        targetObj = obj;
+        var e_obj = window.event? window.event : e;
+        img_L = getLeft(obj) - e_obj.clientX;
+        img_T = getTop(obj) - e_obj.clientY;
+        
+        document.onmousemove = moveDrag;
+        document.onmouseup = stopDrag;
+        if(e_obj.preventDefault)e_obj.preventDefault();
+        }
+        // 드래그를 정지하는 함수 입니다.
+        function stopDrag(){
+        document.onmousemove = null;
+        document.onmouseup = null;
+        }
+    </script>
+</head>
+
+<body>
+    
+    <div class="wrap">
+        <header>header</header>
+        <div class="title">
+            <img src="title.png" alt="캠프운악 맵 타이틀">
+        </div>
+        <div class="map-box" id="map-box">
+            <img src="map.png" style="position:absolute; left:0px; top:50px; cursor:pointer; cursor:hand;" class="map" id="map" alt="캠프운악 맵" onmousedown="startDrag(event, this)">
+        </div>
+    </div>
+   
+</body>
+<script>
+    let elem = document.querySelector("#map-box");
+    let rect = elem.getBoundingClientRect();
+
+    for (const key in rect) {
+        if (typeof rect[key] !== "function") {
+            let para = document.createElement("p");
+            para.textContent = `${key} : ${rect[key]}`;
+            document.body.appendChild(para);
+        }
+    }
+</script>
+
+</html>
