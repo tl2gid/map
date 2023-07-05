@@ -1,0 +1,204 @@
+@font-face {
+    font-family: 'GmarketSansMedium';
+    src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2001@1.1/GmarketSansMedium.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+html{
+    font-size:10px;
+}
+body {
+    font-size:1.6rem;
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+a{
+    text-decoration: none;
+    color:inherit
+}
+h1,h2,h3,h4,h5,h6{
+    font-weight:bold;
+}
+
+/*-------------------*/
+
+.wrap{
+    width:550px;
+    margin:auto;
+}
+img{
+    width:100%;
+}
+header{
+    width:100%;
+    border:1px solid red; 
+    height:10vh;
+}
+.title{
+    width:200px;
+    z-index: 99;
+    position: absolute;
+    top:2rem;
+    left:2rem;
+}
+.map-box{
+    overflow: hidden;
+    position:relative;
+    height:90vh;
+    background:#f8f3e6; 
+}
+.map{
+    transform-origin: center center;
+    max-width: 100%;
+    max-height: 100%;
+    cursor: grab;
+    position: absolute;
+}
+.map .map-btn{
+    position:absolute;
+    width:50px;
+    height:50px;
+    animation: zone 1.5s infinite;
+}
+.map .zone >a:hover{
+    -transform: translateY(-5px);
+}
+@keyframes zone{
+    0%{
+        transform: translateY(-7px);
+    }
+    50%{
+        transform: translateY(0px);
+    }
+    100%{
+        transform: translateY(-7px);
+    }
+}
+.map #a-btn{
+    bottom:52%;
+    right:15%;
+    background:url(images/A.png)no-repeat center;
+    background-size:contain;
+}
+.map #b-btn{
+    bottom:33%;
+    right:22%;
+    background:url(images/B.png)no-repeat center;
+    background-size:contain;
+}
+.map #c-btn{
+    bottom:20%;
+    right:27%;
+    background:url(images/C.png)no-repeat center;
+    background-size:contain;
+}
+.map #d-btn{
+    bottom:52%;
+    left:35%;
+    background:url(images/D.png)no-repeat center;
+    background-size:contain;
+}
+.map #e-btn{
+    top:13%;
+    right:34%;
+    background:url(images/E.png)no-repeat center;
+    background-size:contain;
+}
+
+.map-box .zone .list{
+    padding:0 1.5rem;
+    border-radius: 5%;
+    z-index: 10;
+    position:absolute;
+    width:140px; 
+    background:#fff;
+    box-shadow: 5px 5px 1px #ead49d;
+    display:none
+}
+.map-box .zone .list li{
+    padding:1rem 0;
+    border-bottom:1px solid #ccc
+}
+.map-box .zone .list li h2::after{
+    content:'';
+    width:10px;
+    height:10px;
+    background:url("images/arrow.png")no-repeat center center;
+    background-size:contain;
+    position:absolute;
+    right:0;
+    top:35%;
+    transform: translateY(-35%);
+}
+.map-box .zone .list li h2{
+    position:relative;
+    padding:0.5rem 0;
+    font-size:1.2rem;
+    font-weight: 900;
+    font-family: 'GmarketSansMedium';
+}
+.map-box .zone .list li p{
+    font-size:0.2rem;
+    font-family: 'GmarketSansMedium';
+}
+
+#a-list{
+    top:43%;
+    right:-16%;
+}
+#b-list{
+    bottom:26%;
+    right:-9%;
+}
+#c-list{
+    bottom:7%;
+    right:-4%;
+}
+#d-list{
+    top:43%;
+    left:3%;
+}
+#e-list{
+    top:13%;
+    right:3%;
+}
